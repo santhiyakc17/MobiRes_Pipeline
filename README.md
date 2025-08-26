@@ -54,8 +54,11 @@ snakemake -s Snakefile --cores 4
 📄 References
 
 MOB-suite: https://github.com/phac-nml/mob-suite
+
 PhaBOX: https://github.com/KennthShang/PhaBOX
+
 BLAST: https://blast.ncbi.nlm.nih.gov/Blast.cgi
+
 Diamond: https://github.com/bbuchfink/diamond
 
 
