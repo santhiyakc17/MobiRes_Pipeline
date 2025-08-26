@@ -11,7 +11,7 @@ This pipeline integrates **MOB-suite**, **PhaBOX2**, **BLAST**, **DIAMOND**, and
 * Python >= 3.8 (with Biopython, Pandas, Scikit-learn, etc.)
 * Snakemake >= 7
 * BLAST+ (`makeblastdb`, `blastn`)
-* DIAMOND (Buchfink et al., 2015, *Nature Methods*)
+* DIAMOND
 * MOB-suite >= 3.0.3
 * PhaBOX2 (requires `prodigal-gv`, `diamond`, `mcl`)
 * Conda/venv for reproducibility
