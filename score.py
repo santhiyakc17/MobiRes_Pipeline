@@ -2,7 +2,7 @@
 import pandas as pd
 
 # -----------------------------
-# Input/output paths (fixed version)
+# Input/output paths 
 # -----------------------------
 blast_file = "blast_results/ARG_BLAST_contig.txt"
 score_file = "input/C1_score.csv"
