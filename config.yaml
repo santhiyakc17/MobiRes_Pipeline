@@ -1,7 +1,7 @@
 # ================================
 # Input files
 # ================================
-contigs: "input/SRR20950865.fasta"
+contigs: "input/sample.fasta"
 microbes: "input/microbe.csv"
 c1_score: "input/C1_score.csv"
 
