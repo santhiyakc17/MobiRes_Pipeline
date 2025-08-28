@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-cd "$(dirname "$0")"   # ensure inside resistome_pipeline
+cd "$(dirname "$0")"   # ensure inside MobiRes
 
 # ----------------------------
 # 1. Create venv (Python 3.9 required for pandas==1.0.5 + mob-suite)
@@ -34,13 +34,7 @@ pip install "numexpr==2.8.4" "biopython==1.77" "pulp<=2.6" snakemake
 
 pip install "pandas==1.4.4"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
->>>>>>> bec7a05b678f2bc6355bf68f9067525db27cbd4b
-=======
->>>>>>> bec7a05b678f2bc6355bf68f9067525db27cbd4b
 # ----------------------------
 # 5. MOB-suite + dependencies
 # ----------------------------
@@ -136,4 +130,3 @@ echo "    snakemake --version"
 echo "    phabox2 --help"
 echo "    mcl --version"
 echo "    diamond --version"
-
