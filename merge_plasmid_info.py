@@ -20,7 +20,7 @@ merged_df = pd.merge(df1, df2, on="primary_cluster_id", how="inner")
 # Keep only plasmid rows
 plasmid_df = merged_df[merged_df["molecule_type"] == "plasmid"]
 
-# Group by plasmid cluster and collapse contigs
+# Group by plasmid cluster & collapse contigs
 grouped = plasmid_df.groupby("primary_cluster_id").agg({
     "contig_id": lambda x: ";".join(sorted(set(x))),
     "predicted_mobility_y": "first",
