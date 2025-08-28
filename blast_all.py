@@ -5,7 +5,7 @@ import argparse
 from Bio import SeqIO
 
 # ----------------------------
-# Utility Functions
+# Utility Function
 # ----------------------------
 def run_blast(query, db, output, evalue="1e-5"):
     """Run BLAST search and save tabular output."""
