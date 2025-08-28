@@ -19,7 +19,7 @@ THREADS=8
 mkdir -p "$MOB_OUT" "$PHABOX_OUT"
 
 # ========================
-# Run MOB-recon
+# Run MOB-Recon
 # ========================
 echo "[INFO] Running MOB-recon..."
 mob_recon -i "$CONTIGS" -o "$MOB_OUT/mobrecon_results" --num_threads "$THREADS" --force || {
@@ -41,7 +41,7 @@ fi
 
 
 # ========================
-# Run MOB-typer
+# Run MOB-Typer
 # ========================
 echo "[INFO] Running MOB-typer..."
 mob_typer -i "$CONTIGS" -o "$MOB_OUT/mobtyper_results.txt" || {
