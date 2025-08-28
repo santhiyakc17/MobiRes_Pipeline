@@ -1,7 +1,7 @@
 🧬
 MobiRes is a computational pipeline designed to evaluate the resistome risk of microbial communities by integrating antibiotic resistance gene (ARG) profiles with the mobilome (mobile genetic elements, MGEs).
 
-This pipeline integrates **MOB-suite**, **PhaBOX2**, **BLAST**, **DIAMOND**, and custom scripts to analyze ARG mobility and compute resistome risk. It is implemented with **Snakemake** for reproducibility.
+This pipeline integrates **MOB-suite**, **PhaBOX2**, **BLAST**, **DIAMOND**, and custom scripts to analyze ARG mobility and compute resistome risk. It is implemented with Snakemake for reproducibility.
 
 ---
 
