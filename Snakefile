@@ -1,5 +1,5 @@
 # ================================
-# Resistome Risk Pipeline Snakefile
+# MobiRes Snakefile
 # ================================
 
 # --- Load config.yaml ---
