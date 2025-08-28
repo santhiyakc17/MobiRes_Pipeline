@@ -9,7 +9,7 @@ This pipeline integrates **MOB-suite**, **PhaBOX2**, **BLAST**, **DIAMOND**, and
 ⚙️ Requirements
 
 * Linux / WSL
-* Python >= 3.8 (with Biopython, Pandas, Scikit-learn, etc.)
+* Python >= 3.8 (with Biopython, Pandas, etc.)
 * Snakemake >= 7
 * BLAST+ (`makeblastdb`, `blastn`)
 * DIAMOND
