@@ -19,9 +19,9 @@ rule all:
         "output/node_ERR_with_HP.csv",
         "output/top_20_ERR_nodes_with_HP.csv"
 
-# --------------------------------
+
 # Step 1: MOB-suite + PhaBOX
-# --------------------------------
+
 rule mob_phabox:
     input:
         contigs = CONTIGS
@@ -37,9 +37,9 @@ rule mob_phabox:
         bash run_mp.py {input.contigs} {PHABOX_DB}
         """
 
-# --------------------------------
+
 # Step 2: BLAST (ARGs + Transposons)
-# --------------------------------
+
 rule blast_all:
     input:
         contigs = CONTIGS,
@@ -76,9 +76,9 @@ rule blast_all:
             --outdir blast_results
         """
 
-# --------------------------------
+
 # Step 3: Merge plasmid info
-# --------------------------------
+
 rule merge_plasmid_info:
     input:
         contig_report = "mob_output/contig_report.txt",
@@ -95,9 +95,9 @@ rule merge_plasmid_info:
             --out {output}
         """
 
-# --------------------------------
+
 # Step 4: Merge ARG BLAST with C1 Score
-# --------------------------------
+
 rule merge_ARG_C1:
     input:
         arg_blast = "blast_results/ARG_BLAST_contig.txt",
@@ -114,9 +114,9 @@ rule merge_ARG_C1:
             --out {output}
         """
         
-# --------------------------------
+
 # Step 5: Compute ERR + ResCon
-# --------------------------------
+
 rule compute_ERR:
     input:
         arg_contig = "blast_results/ARG_BLAST.csv",
