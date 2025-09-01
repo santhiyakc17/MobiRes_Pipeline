@@ -1,6 +1,6 @@
-# ================================
+
 # MobiRes Snakefile
-# ================================
+
 
 # --- Load config.yaml ---
 configfile: "config.yaml"
