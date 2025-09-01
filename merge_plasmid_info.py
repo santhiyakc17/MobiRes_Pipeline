@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 import pandas as pd
 
-# ================================
+
 # Input files
-# ================================
+
 file1 = "mob_output/mobrecon_results/contig_report.txt"
 file2 = "mob_output/mobrecon_results/mobtyper_results.txt"
 outfile = "blast_results/mob_out.csv"
 
-# ================================
+
 # Load MOB-suite outputs
-# ================================
+
 df1 = pd.read_csv(file1, sep="\t")   # contig report
 df2 = pd.read_csv(file2, sep="\t")   # mobtyper results
 
