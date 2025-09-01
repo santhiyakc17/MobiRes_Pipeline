@@ -1,18 +1,17 @@
-# ================================
+
 # Input files
-# ================================
+
 contigs: "input/sample.fasta"
 microbes: "input/microbe.csv"
 c1_score: "input/C1_score.csv"
 
-# ================================
 # Databases
-# ================================
+
 card_db: "databases/card_db"
 transposon_db: "databases/Transposon_E_db"
 phabox_db: "databases/phabox_db_v2_1"
 
-# ================================
+
 # Pipeline settings
-# ================================
+
 threads: 8
