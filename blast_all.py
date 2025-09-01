@@ -4,9 +4,8 @@ import subprocess
 import argparse
 from Bio import SeqIO
 
-# ----------------------------
 # Utility Function
-# ----------------------------
+
 def run_blast(query, db, output, evalue="1e-5"):
     """Run BLAST search and save tabular output."""
     os.makedirs(os.path.dirname(output), exist_ok=True)
@@ -46,9 +45,9 @@ def extract_sequences(hits, fasta, output, seq_type=""):
                 count += 1
     print(f"✅ Extracted {count} {seq_type} sequences → {output}")
 
-# ----------------------------
+
 # Main
-# ----------------------------
+
 def main():
     parser = argparse.ArgumentParser(description="BLAST ARGs and Transposons")
     parser.add_argument("--contigs", required=True, help="Input contigs FASTA")
