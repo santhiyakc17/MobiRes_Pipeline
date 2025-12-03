@@ -8,10 +8,10 @@ import glob
 from Bio import SeqIO
 
 # --- Weights ---
-PLASMID_WEIGHTS = {'conjugative': 1.0, 'mobilizable': 0.75, 'non-mobilizable': 0.5}
-PHAGE_WEIGHTS = {'virulent': 1.0, 'temperate': 0.5}
-TRANSPOSON_WEIGHTS = {'conjugative': 1.0, 'composite': 0.75, 'unit': 0.5}
-DEFAULT_WEIGHT = 0.1
+PLASMID_WEIGHTS = {'conjugative': 1.0, 'mobilizable': 0.5, 'non-mobilizable': 0.1}
+PHAGE_WEIGHTS = {'temperate': 1.0, 'virulent': 0.1}
+TRANSPOSON_WEIGHTS = {'conjugative': 1.0, 'composite': 0.5, 'unit': 0.1}
+DEFAULT_WEIGHT = 0.05
 
 # WHO/priority pathogens list (lowercased)
 PATHOGENS = {
