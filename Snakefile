@@ -7,17 +7,18 @@ configfile: "config.yaml"
 
 CONTIGS   = config["contigs"]
 MICROBES  = config["microbes"]
-C1_SCORE  = config["c1_score"]
+CI_SCORE  = config["ci_score"]
 CARD_DB   = config["card_db"]
 TN_DB     = config["transposon_db"]
+IE_DB     = config["ie_db"]
 PHABOX_DB = config["phabox_db"]
 THREADS   = config["threads"]
 
 rule all:
     input:
-        "output/sample_ERR_summary.csv",
-        "output/node_ERR_with_HP.csv",
-        "output/top_20_ERR_nodes_with_HP.csv"
+        "output/sample_RR_summary.csv",
+        "output/node_RR_with_HP.csv",
+        "output/top_20_RR_nodes_with_HP.csv"
 
 
 # Step 1: MOB-suite + PhaBOX
@@ -52,19 +53,27 @@ rule blast_all:
             TN_DB + ".nin",
             TN_DB + ".nsq",
             TN_DB + ".nhr"
+        ],
+        ie_db = [
+            IE_DB + ".nin",
+            IE_DB + ".nsq",
+            IE_DB + ".nhr"
         ]
     output:
         contig_blast = "blast_results/ARG_BLAST_contig.txt",
         plasmid_blast = "blast_results/ARG_BLAST_plasmid.txt",
         phage_blast = "blast_results/ARG_BLAST_phage.txt",
         tn_blast = "blast_results/TN_BLAST_raw.txt",
+        ie_blast = "blast_results/IE_BLAST_raw.txt",
         contig_fa = "blast_results/ARG_sequences_contig.fasta",
         plasmid_fa = "blast_results/ARG_sequences_plasmids.fasta",
         phage_fa = "blast_results/ARG_sequences_phage.fasta",
         tn_fa = "blast_results/ARG_sequences_transposon.fasta"
+        ie_fa = "blast_results/ARG_sequences_IE.fasta"
     params:
         card_prefix = CARD_DB,
-        tn_prefix = TN_DB
+        tn_prefix = TN_DB,
+        ie_prefix = IE_DB
     log:
         "logs/blast_all.log"
     shell:
@@ -96,21 +105,21 @@ rule merge_plasmid_info:
         """
 
 
-# Step 4: Merge ARG BLAST with C1 Score
+# Step 4: Merge ARG BLAST with CI Score
 
-rule merge_ARG_C1:
+rule merge_ARG_CI:
     input:
         arg_blast = "blast_results/ARG_BLAST_contig.txt",
-        c1 = C1_SCORE
+        ci = CI_SCORE
     output:
         "blast_results/ARG_BLAST.csv"
     log:
-        "logs/merge_ARG_C1.log"
+        "logs/merge_ARG_CI.log"
     shell:
         """
         python3 score.py \
             --arg_blast {input.arg_blast} \
-            --c1_score {input.c1} \
+            --ci_score {input.ci} \
             --out {output}
         """
         
@@ -124,6 +133,8 @@ rule compute_ERR:
         arg_phage = "blast_results/ARG_sequences_phage.fasta",
         transposon = "blast_results/TN_BLAST_raw.txt",    # fixed
         arg_transposon = "blast_results/ARG_sequences_transposon.fasta",
+        ie = "blast_results/IE_BLAST_raw.txt",
+        arg_ie = "blast_results/ARG_sequences_IE.fasta",
         mob = "blast_results/mob_out.csv",
         phage = "phabox_output/phage_summary.txt",
         microbes = MICROBES
@@ -141,6 +152,8 @@ rule compute_ERR:
             --arg_phage {input.arg_phage} \
             --transposon {input.transposon} \
             --arg_transposon {input.arg_transposon} \
+            --ie {input.ie} \
+            --arg_ie {input.arg_ie} \
             --mob {input.mob} \
             --phage {input.phage} \
             --microbes {input.microbes} \
