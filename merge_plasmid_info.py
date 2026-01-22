@@ -33,5 +33,5 @@ grouped = plasmid_df.groupby("primary_cluster_id").agg({
 
 # Save output
 grouped.to_csv(outfile, index=False)
-print(f"✅ Saved plasmid-cluster summary → {outfile} with {len(grouped)} plasmids")
+print(f"Saved plasmid-cluster summary → {outfile} with {len(grouped)} plasmids")
 
