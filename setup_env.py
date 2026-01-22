@@ -119,7 +119,7 @@ fi
 # ----------------------------
 deactivate
 echo ""
-echo "[✓] Setup complete!"
+echo "Setup complete!"
 echo "To activate, run:"
 echo "    source venv/bin/activate"
 echo ""
