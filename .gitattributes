@@ -7,3 +7,4 @@
 *.nsd filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
 *.nss filter=lfs diff=lfs merge=lfs -text
+databases/IE_DB.* filter=lfs diff=lfs merge=lfs -text
