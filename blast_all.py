@@ -43,7 +43,7 @@ def extract_sequences(hits, fasta, output, seq_type=""):
             if h in seqs:
                 SeqIO.write(seqs[h], out, "fasta")
                 count += 1
-    print(f"✅ Extracted {count} {seq_type} sequences → {output}")
+    print(f" Extracted {count} {seq_type} sequences → {output}")
 
 
 # Main
@@ -53,6 +53,7 @@ def main():
     parser.add_argument("--contigs", required=True, help="Input contigs FASTA")
     parser.add_argument("--card_db", required=True, help="CARD DB prefix (without .nin/.nsq)")
     parser.add_argument("--tn_db", required=True, help="Transposon DB prefix")
+    parser.add_argument("--ie_db", required=True, help="Integrative Element (IE) DB prefix")
     parser.add_argument("--outdir", required=True, help="Output directory")
     args = parser.parse_args()
 
@@ -64,18 +65,21 @@ def main():
     phage_fasta    = "phabox_output/phages.fasta"
     arg_db         = args.card_db
     tn_db          = args.tn_db
-    identity_thr   = 90.0
+    ie_db          = args.ie_db
+    identity_thr   = 75.0
 
     # Outputs
     contig_blast = os.path.join(args.outdir, "ARG_BLAST_contig.txt")
     plasmid_blast = os.path.join(args.outdir, "ARG_BLAST_plasmid.txt")
     phage_blast = os.path.join(args.outdir, "ARG_BLAST_phage.txt")
     tn_blast = os.path.join(args.outdir, "TN_BLAST_raw.txt")
+    ie_blast       = os.path.join(args.outdir, "IE_BLAST_raw.txt")
 
     contig_out = os.path.join(args.outdir, "ARG_sequences_contig.fasta")
     plasmid_out = os.path.join(args.outdir, "ARG_sequences_plasmids.fasta")
     phage_out = os.path.join(args.outdir, "ARG_sequences_phage.fasta")
     tn_out = os.path.join(args.outdir, "ARG_sequences_transposon.fasta")
+    ie_out         = os.path.join(args.outdir, "ARG_sequences_IE.fasta")
 
     # ---- ARG detection ----
     run_blast(contig_fasta, arg_db, contig_blast)
@@ -97,9 +101,12 @@ def main():
     extract_sequences(parse_blast_hits(tn_blast, identity_thr),
                       contig_fasta, tn_out, seq_type="ARG in transposons")
     
+    # -------- Integrative Element (IE) Detection -------- #
+    run_blast(contig_fasta, ie_db, ie_blast)
+    extract_sequences(parse_blast_hits(ie_blast, identity_thr),
+                      contig_fasta, ie_out, seq_type="ARG in integrative elements")
 
-    print("🎯 BLAST analysis complete.")
+    print("BLAST analysis complete.")
 
 if __name__ == "__main__":
     main()
-
