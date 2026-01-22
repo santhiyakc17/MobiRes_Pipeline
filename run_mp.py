@@ -95,5 +95,5 @@ else
     touch "$PHABOX_OUT/phages.fasta"
 fi
 
-echo "[✅ DONE] MOB-suite + PhaBOX finished successfully."
+echo "[DONE] MOB-suite + PhaBOX finished successfully."
 
