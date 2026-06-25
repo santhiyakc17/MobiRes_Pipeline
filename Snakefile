@@ -68,7 +68,7 @@ rule blast_all:
         contig_fa = "blast_results/ARG_sequences_contig.fasta",
         plasmid_fa = "blast_results/ARG_sequences_plasmids.fasta",
         phage_fa = "blast_results/ARG_sequences_phage.fasta",
-        tn_fa = "blast_results/ARG_sequences_transposon.fasta"
+        tn_fa = "blast_results/ARG_sequences_transposon.fasta",
         ie_fa = "blast_results/ARG_sequences_IE.fasta"
     params:
         card_prefix = CARD_DB,
@@ -124,9 +124,9 @@ rule merge_ARG_CI:
         """
         
 
-# Step 5: Compute ERR + ResCon
+# Step 5: Compute RR + ResCon
 
-rule compute_ERR:
+rule compute_RR:
     input:
         arg_contig = "blast_results/ARG_BLAST.csv",
         arg_plasmid = "blast_results/ARG_sequences_plasmids.fasta",
@@ -139,11 +139,11 @@ rule compute_ERR:
         phage = "phabox_output/phage_summary.txt",
         microbes = MICROBES
     output:
-        "output/sample_ERR_summary.csv",
-        "output/node_ERR_with_HP.csv",
-        "output/top_20_ERR_nodes_with_HP.csv"
+        "output/sample_RR_summary.csv",
+        "output/node_RR_with_HP.csv",
+        "output/top_20_RR_nodes_with_HP.csv"
     log:
-        "logs/compute_ERR.log"
+        "logs/compute_RR.log"
     shell:
         """
         python3 m3.py \
